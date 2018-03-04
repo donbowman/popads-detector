@@ -64,7 +64,6 @@ def create_model():
     except Exception as e:
         print(e)
         print("Model not cached, create")
-        sys.exit(0)
         pass
 
     model=Sequential()
