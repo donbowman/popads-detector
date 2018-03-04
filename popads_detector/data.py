@@ -7,6 +7,7 @@
 import os
 import tldextract
 import random
+import pickle
 from zipfile import ZipFile
 
 import urllib.request
@@ -50,21 +51,26 @@ def get_popads_domains(url=POPADS_URL, filename='data/popads-hosts.txt'):
     return list(res.keys())
 
 def get_training_data():
-    res = {}
-    res['popads_domains'] = get_popads_domains()
-    random.shuffle(res['popads_domains'])
-    res['train_half_popads'] = res['popads_domains'][:int(len(res['popads_domains'])/2)]
-    res['test_half_popads'] = res['popads_domains'][int(len(res['popads_domains'])/2):]
+    try:
+        dataset = pickle.load(open("data/dataset.pkl","rb"))
+    except FileNotFoundError:
+        dataset = {}
+        dataset['popads_domains'] = get_popads_domains()
+        random.shuffle(dataset['popads_domains'])
+        dataset['train_half_popads'] = dataset['popads_domains'][:int(len(dataset['popads_domains'])/2)]
+        dataset['test_half_popads'] = dataset['popads_domains'][int(len(dataset['popads_domains'])/2):]
 
-    top_domains = get_top_domains(len(res['popads_domains']))
-    res['top_domains'] = top_domains[:int(len(res['popads_domains'])/2)]
-    res['top_test_domains'] = top_domains[int(len(res['popads_domains'])/2):]
+        top_domains = get_top_domains(len(dataset['popads_domains']))
+        dataset['top_domains'] = top_domains[:int(len(dataset['popads_domains'])/2)]
+        dataset['top_test_domains'] = top_domains[int(len(dataset['popads_domains'])/2):]
 
-    random.shuffle(res['popads_domains'])
+        random.shuffle(dataset['popads_domains'])
 
-    res['max_model_len'] = len(max(
-                      max(res['popads_domains'], key=len),
-                      max(res['top_domains'], key=len)
-                  ))
+        dataset['max_model_len'] = len(max(
+                          max(dataset['popads_domains'], key=len),
+                          max(dataset['top_domains'], key=len)
+                      ))
 
-    return res
+        pickle.dump( dataset, open("data/dataset.pkl", "wb"))
+
+    return dataset
