@@ -25,5 +25,5 @@ dataset = data.get_training_data()
 for domain in dataset['test_half_popads']:
     test_domain(model, domain, True)
 
-for domain in dataset['test_top_domains']:
+for domain in dataset['top_test_domains']:
     test_domain(model, domain, False)
