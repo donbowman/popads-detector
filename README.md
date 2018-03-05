@@ -29,6 +29,8 @@ as the 'bad'.
 The popads list is split in half, half is used for training, and the other half to
 test the efficacy.
 
+More info [on my blog](https://blog.donbowman.ca/2018/03/04/recognising-popunder-advertisements-with-machine-learning-an-implementation/)
+
 ## License
 
 Copyright 2018 Don Bowman <db@donbowman.ca>

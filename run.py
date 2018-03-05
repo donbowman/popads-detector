@@ -12,9 +12,9 @@ model = train.create_model()
 def test_domain(model, domain, expected):
     r1 = train.model_lookup(model, domain)
     r2 = True
-    if (expected and r1 < 0.7):
+    if (expected and r1 < 0.8):
         r2 = False
-    if ((not expected) and r1 > 0.6):
+    if ((not expected) and r1 > 0.3):
         r2 = False
     print("%s -->  %32s -> %4.2f (%s)" % (r2,domain, r1, expected))
     #print("Error: <<%s>> was expected %s, but got %4.2f" % (domain, expected, r1))

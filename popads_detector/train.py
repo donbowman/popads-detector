@@ -94,7 +94,7 @@ def create_model():
 
     filepath = "data/trained.hdf5"
     checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
-    model.fit(xset, yset, batch_size=900, callbacks=[checkpoint], validation_split=0.10, epochs=25)
+    model.fit(xset, yset, batch_size=900, callbacks=[checkpoint], validation_split=0.10, epochs=100)
 
     return model
 
