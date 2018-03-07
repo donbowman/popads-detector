@@ -54,6 +54,9 @@ def get_training_data():
     try:
         dataset = pickle.load(open("data/dataset.pkl","rb"))
     except FileNotFoundError:
+        if not os.path.exists("data"):
+            os.makedirs("data")
+
         dataset = {}
         dataset['popads_domains'] = get_popads_domains()
         random.shuffle(dataset['popads_domains'])
