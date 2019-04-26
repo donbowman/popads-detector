@@ -31,6 +31,14 @@ test the efficacy.
 
 More info [on my blog](https://blog.donbowman.ca/2018/03/04/recognising-popunder-advertisements-with-machine-learning-an-implementation/)
 
+## Dev
+
+```
+python3 -m venv .env
+. .env/bin/activate
+pip install -r requirements.txt
+```
+
 ## License
 
 Copyright 2018 Don Bowman <db@donbowman.ca>

@@ -1,6 +1,6 @@
-Keras==2.1.5
-h5py==2.7.1
-numpy==1.14.1
-pandas==0.22.0
-tensorflow==1.6.0
-tldextract==2.2.0
+Keras>=2.2.0,<2.3.0
+h5py>=2.9.0,<2.10
+numpy>=1.16.0,<1.17.0
+pandas>=0.24.0,<0.25.0
+tensorflow>=1.13.0,<1.14.0
+tldextract>=2.2.0,<2.3.0
